@@ -179,7 +179,6 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         <form
             onSubmit={cotizarSeguro}
         >
-            { error ? <Error>Todos los campos son obligatorios</Error>  : null }
 
             <Campo>
                 <Label>Limpieza</Label>
@@ -327,7 +326,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="500GB">500GB</option>
                     <option value="1TB">1TB</option>
                     <option value="otros">otros</option>
@@ -343,7 +342,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="120GB">120GB</option>
                     <option value="240GB">240GB</option>
                     <option value="otros">500GB</option>
@@ -359,7 +358,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                    <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="128GB">128GB</option>
                     <option value="256GB">256GB</option>
                     <option value="otros">500GB</option>
@@ -375,7 +374,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="128GB">128GB</option>
                     <option value="256GB">256GB</option>
                     <option value="otros">500GB</option>
@@ -391,7 +390,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="4GB">4GB</option>
                     <option value="8GB">8GB</option>
                     <option value="otros">16GB</option>
@@ -407,7 +406,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="nada">Omitir Seleccion</option>
+                    <option value="----">Omitir Seleccion</option>
                     <option value="4GB">4GB</option>
                     <option value="8GB">8GB</option>
                     <option value="otros">16GB</option>

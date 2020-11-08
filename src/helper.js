@@ -54,7 +54,7 @@ export function calcularDURO(disco) {
     let incremento;
 
     switch(disco) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '500GB':
@@ -79,7 +79,7 @@ export function calcularSATA(sata) {
     let incremento;
 
     switch(sata) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '120GB':
@@ -104,7 +104,7 @@ export function calcularM2(m2) {
     let incremento;
 
     switch(m2) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '128GB':
@@ -129,7 +129,7 @@ export function calcularM2PCIE(pcie) {
     let incremento;
 
     switch(pcie) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '128GB':
@@ -154,7 +154,7 @@ export function calcularRAM3(ram3) {
     let incremento;
 
     switch(ram3) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '4GB':
@@ -179,7 +179,7 @@ export function calcularRAM4(ram4) {
     let incremento;
 
     switch(ram4) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '4GB':
