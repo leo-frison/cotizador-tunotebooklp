@@ -52,19 +52,19 @@ const Error = styled.div`
 const Formulario = ({guardarResumen, guardarCargando}) => {
 
     const [ datos, guardarDatos ] = useState({
-        limpieza: '',
-        so: '',
-        display: '',
-        ssd: '',
-        ram: '',
-        hdd: '',
-        backup: '',
-        disco: '',
-        sata: '',
-        m2: '',
-        pcie: '',
-        ram3: '',
-        ram4: ''
+        limpieza: 'nada',
+        so: 'no',
+        display: 'no',
+        ssd: 'no',
+        ram: 'no',
+        hdd: 'no',
+        backup: 'no',
+        disco: 'nada',
+        sata: 'nada',
+        m2: 'nada',
+        pcie: 'nada',
+        ram3: 'nada',
+        ram4: 'nada'
 
     });
     const [ error, guardarError ] = useState(false);
@@ -179,6 +179,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         <form
             onSubmit={cotizarSeguro}
         >
+            { error ? <Error>Todos los campos son obligatorios</Error>  : null }
 
             <Campo>
                 <Label>Limpieza</Label>
@@ -187,7 +188,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={limpieza}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="basica">Basica</option>
                     <option value="advance">Advance</option>
                     <option value="prog">ProG</option>
@@ -197,22 +198,14 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
  
 
             <Campo>
-                <Label>Instalacion SO</Label>
+                <Label>Instalación SO</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="so"
                     value="si"
                     checked={so === "si"}
                     onChange={obtenerInformacion}
-                /> SI
-
-                <InputRadio 
-                    type="radio"
-                    name="so"
-                    value="no"
-                    checked={so === "no"}
-                    onChange={obtenerInformacion}
-                /> NO
+                /> * Backup hasta 35GB incluido en la instalación
             </Campo>
 
 
@@ -220,20 +213,12 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
             <Campo>
                 <Label>Colocación Display</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="display"
                     value="si"
                     checked={display === "si"}
                     onChange={obtenerInformacion}
-                /> SI
-
-                <InputRadio 
-                    type="radio"
-                    name="display"
-                    value="no"
-                    checked={display === "no"}
-                    onChange={obtenerInformacion}
-                /> NO
+                />     
             </Campo>
 
 
@@ -241,39 +226,23 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
              <Campo>
                 <Label>Colocación SSD</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="ssd"
                     value="si"
                     checked={ssd === "si"}
                     onChange={obtenerInformacion}
-                /> SI
-
-                <InputRadio 
-                    type="radio"
-                    name="ssd"
-                    value="no"
-                    checked={ssd === "no"}
-                    onChange={obtenerInformacion}
-                /> NO
+                />       
             </Campo>
 
             <Campo>
                 <Label>Colocación RAM</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="ram"
                     value="si"
                     checked={ram === "si"}
                     onChange={obtenerInformacion}
-                /> SI
-
-                <InputRadio 
-                    type="radio"
-                    name="ram"
-                    value="no"
-                    checked={ram === "no"}
-                    onChange={obtenerInformacion}
-                /> NO
+                />
             </Campo>
 
 
@@ -281,40 +250,24 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
             <Campo>
                 <Label>Colocación HDD</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="hdd"
                     value="si"
                     checked={hdd === "si"}
                     onChange={obtenerInformacion}
-                /> SI
-
-                <InputRadio 
-                    type="radio"
-                    name="hdd"
-                    value="no"
-                    checked={hdd === "no"}
-                    onChange={obtenerInformacion}
-                /> NO
+                />
             </Campo>
 
 
             <Campo>
                 <Label>Back up de Datos</Label>
                 <InputRadio 
-                    type="radio"
+                    type="checkbox"
                     name="backup"
                     value="si"
                     checked={backup === "si"}
                     onChange={obtenerInformacion}
-                /> Hasta 35GB 
-
-                <InputRadio 
-                    type="radio"
-                    name="backup"
-                    value="no"
-                    checked={backup === "no"}
-                    onChange={obtenerInformacion}
-                /> Mas de 35GB
+                /> Mas de 35GB 
             </Campo>
 
 
@@ -325,8 +278,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={disco}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="500GB">500GB</option>
                     <option value="1TB">1TB</option>
                     <option value="otros">otros</option>
@@ -341,8 +293,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={sata}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="120GB">120GB</option>
                     <option value="240GB">240GB</option>
                     <option value="otros">500GB</option>
@@ -357,8 +308,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={m2}
                     onChange={obtenerInformacion}
                 >
-                   <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                   <option value="nada">-- Seleccione --</option>
                     <option value="128GB">128GB</option>
                     <option value="256GB">256GB</option>
                     <option value="otros">500GB</option>
@@ -373,8 +323,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={pcie}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="128GB">128GB</option>
                     <option value="256GB">256GB</option>
                     <option value="otros">500GB</option>
@@ -389,8 +338,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={ram3}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="4GB">4GB</option>
                     <option value="8GB">8GB</option>
                     <option value="otros">16GB</option>
@@ -405,8 +353,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     value={ram4}
                     onChange={obtenerInformacion}
                 >
-                    <option value="">-- Seleccione --</option>
-                    <option value="----">Omitir Seleccion</option>
+                    <option value="nada">-- Seleccione --</option>
                     <option value="4GB">4GB</option>
                     <option value="8GB">8GB</option>
                     <option value="otros">16GB</option>

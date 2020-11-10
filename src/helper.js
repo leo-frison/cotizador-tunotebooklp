@@ -3,6 +3,9 @@ export function calcularLimpieza(limpieza) {
     let incremento;
 
     switch(limpieza) {
+        case 'nada':
+            incremento = 0;
+            break;
         case 'basica':
             incremento = 600;
             break;
@@ -46,7 +49,7 @@ export function obtenerHDD(hdd) {
 
 // Calculo de backup de datos
 export function obtenerBackup(backup) {
-    return (backup === 'si') ? 0 : 300;
+    return (backup === 'no') ? 0 : 300;
 }
 
 // precio de HDD
@@ -54,7 +57,7 @@ export function calcularDURO(disco) {
     let incremento;
 
     switch(disco) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '500GB':
@@ -79,7 +82,7 @@ export function calcularSATA(sata) {
     let incremento;
 
     switch(sata) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '120GB':
@@ -104,7 +107,7 @@ export function calcularM2(m2) {
     let incremento;
 
     switch(m2) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '128GB':
@@ -129,7 +132,7 @@ export function calcularM2PCIE(pcie) {
     let incremento;
 
     switch(pcie) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '128GB':
@@ -154,7 +157,7 @@ export function calcularRAM3(ram3) {
     let incremento;
 
     switch(ram3) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '4GB':
@@ -179,7 +182,7 @@ export function calcularRAM4(ram4) {
     let incremento;
 
     switch(ram4) {
-        case '----':
+        case 'nada':
             incremento = 0;
             break;
         case '4GB':
