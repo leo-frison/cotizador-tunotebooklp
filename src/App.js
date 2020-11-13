@@ -31,16 +31,9 @@ function App() {
         limpieza: '',
         so: '',
         display: '',
-        hdd: '',
-        ssd: '',
-        ram: '',
-        backup: '',
         disco: '',
         sata: '',
-        m2: '',
-        pcie: '',
-        ram3: '',
-        ram4: ''
+        ram: ''
       }
   });
 
@@ -54,9 +47,7 @@ function App() {
         <Header 
           titulo='Cotizador de Presupuesto'
         />
-
-        ? <Mensaje>Saca una captura de pantalla del resumen de cotizacion y envianos la imagen por whatsapp</Mensaje> 
-
+        
         <ContenedorFormulario>
             <Formulario 
               guardarResumen={guardarResumen}

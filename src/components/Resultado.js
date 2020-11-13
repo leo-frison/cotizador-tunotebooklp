@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const Mensaje = styled.p`
     background-color: rgb(127, 224, 237);
     margin-top: 2rem;
+    font-weight: bolder;
     padding: 1rem;
     text-align: center;
 `;
@@ -48,6 +49,7 @@ const Resultado = ({cotizacion}) => {
                                 <TextoCotizacion>El total es: $ <span> {cotizacion} </span>  </TextoCotizacion>
                             </CSSTransition>
                         </TransitionGroup>
+                        <Mensaje>Saca una captura de pantalla del Resumen de Cotización y envianos la imagen por whatsapp</Mensaje> 
                     </ResultadoCotizacion>
                 )
     )

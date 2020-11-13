@@ -14,27 +14,20 @@ const ContenedorResumen = styled.div`
 const Resumen = ({datos}) => {
 
     // extraer de datos
-    const {limpieza, so, display, ssd, ram, hdd, backup, disco, sata, m2, pcie, ram3, ram4} = datos;
+    const {limpieza, so, display, disco, sata, ram} = datos;
 
-    if(limpieza === '' || so === '' || display === '' || ssd === '' || ram === '' || hdd === '' || backup === '' || disco === '' || sata === '' || m2 === '' || pcie === '' || ram3 === '' || ram4 === '') return null;
+    if(limpieza === '' || so === '' || display === '' || disco === '' || sata === '' || ram === '') return null;
 
     return ( 
         <ContenedorResumen>
             <h2>Resumen de Cotización</h2>
             <ul>
                 <li>Limpieza: { primerMayuscula(limpieza) } </li>
-                <li>Instalacion SO: {primerMayuscula(so)} </li>
+                <li>Instalacion SO : {primerMayuscula(so)} </li>
                 <li>Colocación Display: { primerMayuscula(display) } </li>
-                <li>Colocación SSD: { primerMayuscula(ssd) } </li>
-                <li>Colocación RAM: { primerMayuscula(ram) } </li>
-                <li>Colocación HDD: { primerMayuscula(hdd) } </li>
-                <li>Backup: { primerMayuscula(backup) } </li>
-                <li>HDD: { primerMayuscula(disco) } </li>
-                <li>SSD SATA: { primerMayuscula(sata) } </li>
-                <li>SSD M.2: { primerMayuscula(m2) } </li>
-                <li>SSD M.2 pcie: { primerMayuscula(pcie) } </li>
-                <li>RAM SODDIM3: { primerMayuscula(ram3) } </li>
-                <li>RAM SODDIM4: { primerMayuscula(ram4) } </li>
+                <li>Colocación HDD: { primerMayuscula(disco) } </li>
+                <li>Colocación SSD: { primerMayuscula(sata) } </li>
+                <li>Ampliación RAM: { primerMayuscula(ram) } </li>
             </ul>
         </ContenedorResumen>
      );

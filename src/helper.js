@@ -3,7 +3,7 @@ export function calcularLimpieza(limpieza) {
     let incremento;
 
     switch(limpieza) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case 'basica':
@@ -23,41 +23,58 @@ export function calcularLimpieza(limpieza) {
 }
 
 // Calcula si instala el SO
-export function obtenerSO(so) {
-    return (so === 'si') ? 1800 : 0;
+
+export function calcularSO(so) {
+    let incremento;
+
+    switch(so) {
+        case '----':
+            incremento = 0;
+            break;
+        case 'menos':
+            incremento = 1000;
+            break;
+        case 'mas':
+            incremento = 1000;
+            break;            
+        default:
+            break;
+    }
+
+    return incremento;
 }
+
 
 // Calcula si coloca Display
-export function obtenerDisplay(display) {
-    return (display === 'si') ? 1200 : 0;
+
+export function calcularDisplay(display) {
+    let incremento;
+
+    switch(display) {
+        case '----':
+            incremento = 0;
+            break;
+        case 'si':
+            incremento = 1000;
+            break;
+        case 'no':
+            incremento = 0;
+            break;        
+        default:
+            break;
+    }
+
+    return incremento;
 }
 
-// Calcula si coloca SSD
-export function obtenerSSD(ssd) {
-    return (ssd === 'si') ? 300 : 0;
-}
 
-// Calcula si coloca RAM
-export function obtenerRAM(ram) {
-    return (ram === 'si') ? 300 : 0;
-}
 
-// Calcula si coloca HDD
-export function obtenerHDD(hdd) {
-    return (hdd === 'si') ? 300 : 0;
-}
-
-// Calculo de backup de datos
-export function obtenerBackup(backup) {
-    return (backup === 'no') ? 0 : 300;
-}
-
-// precio de HDD
+// Colacion  HDD
 export function calcularDURO(disco) {
     let incremento;
 
     switch(disco) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '500GB':
@@ -77,12 +94,12 @@ export function calcularDURO(disco) {
     return incremento;
 }
 
-// precio de SSD
+// Colocacion  de SSD
 export function calcularSATA(sata) {
     let incremento;
 
     switch(sata) {
-        case 'nada':
+        case '----':
             incremento = 0;
             break;
         case '120GB':
@@ -102,62 +119,13 @@ export function calcularSATA(sata) {
     return incremento;
 }
 
-// precio de SSD m2
-export function calcularM2(m2) {
+
+// ampliacion de RAM
+export function calcularRAM(ram) {
     let incremento;
 
-    switch(m2) {
-        case 'nada':
-            incremento = 0;
-            break;
-        case '128GB':
-            incremento = 2000;
-            break;
-        case '256GB':
-            incremento = 4000;
-            break
-        case 'otros':
-            incremento = 6000;
-            break
-            
-        default:
-            break;
-    }
-
-    return incremento;
-}
-
-// precio de SSD m2 pcie
-export function calcularM2PCIE(pcie) {
-    let incremento;
-
-    switch(pcie) {
-        case 'nada':
-            incremento = 0;
-            break;
-        case '128GB':
-            incremento = 2500;
-            break;
-        case '256GB':
-            incremento = 5000;
-            break
-        case 'otros':
-            incremento = 7500;
-            break
-            
-        default:
-            break;
-    }
-
-    return incremento;
-}
-
-// precio de RAM SODDIM 3
-export function calcularRAM3(ram3) {
-    let incremento;
-
-    switch(ram3) {
-        case 'nada':
+    switch(ram) {
+        case '----':
             incremento = 0;
             break;
         case '4GB':
@@ -177,30 +145,7 @@ export function calcularRAM3(ram3) {
     return incremento;
 }
 
-// precio de RAM SODDIM 3
-export function calcularRAM4(ram4) {
-    let incremento;
 
-    switch(ram4) {
-        case 'nada':
-            incremento = 0;
-            break;
-        case '4GB':
-            incremento = 600;
-            break;
-        case '8GB':
-            incremento = 1200;
-            break
-        case 'otros':
-            incremento = 2400;
-            break
-            
-        default:
-            break;
-    }
-
-    return incremento;
-}
 
 
 

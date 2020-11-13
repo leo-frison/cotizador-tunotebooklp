@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { calcularLimpieza, obtenerSO, obtenerDisplay, obtenerSSD, obtenerRAM, obtenerHDD, obtenerBackup, calcularDURO, calcularSATA, calcularM2, calcularM2PCIE, calcularRAM3, calcularRAM4 } from '../helper';
+import { calcularLimpieza, calcularSO, calcularDisplay, calcularDURO, calcularSATA, calcularRAM } from '../helper';
+
 
 const Campo = styled.div`
     display: flex;
@@ -52,25 +53,18 @@ const Error = styled.div`
 const Formulario = ({guardarResumen, guardarCargando}) => {
 
     const [ datos, guardarDatos ] = useState({
-        limpieza: 'nada',
-        so: 'no',
-        display: 'no',
-        ssd: 'no',
-        ram: 'no',
-        hdd: 'no',
-        backup: 'no',
-        disco: 'nada',
-        sata: 'nada',
-        m2: 'nada',
-        pcie: 'nada',
-        ram3: 'nada',
-        ram4: 'nada'
+        limpieza: '----',
+        so: '----',
+        display: '----',
+        disco: '----',
+        sata: '----',
+        ram: '----'
 
     });
     const [ error, guardarError ] = useState(false);
 
     // extraer los valores del state
-    const { limpieza, so, display, ssd, ram, hdd, backup, disco, sata, m2, pcie, ram3, ram4 } = datos;
+    const { limpieza, so, display, disco, sata, ram } = datos;
 
     // Leer los datos del formulario y colocarlos en el state
     const obtenerInformacion = e => {
@@ -84,7 +78,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
     const cotizarSeguro = e => {
         e.preventDefault();
 
-        if(limpieza.trim() === '' || so.trim() === '' || display.trim() === '' || ssd.trim() === '' || ram.trim() === '' || hdd.trim() === '' || backup.trim() === '' || disco.trim() === '' || sata.trim() === '' || m2.trim() === '' || pcie.trim() === '' || ram3.trim() === '' || ram4.trim() === '') {
+        if(limpieza.trim() === '' || so.trim() === '' || display.trim() === '' || disco.trim() === '' || sata.trim() === '' || ram.trim() === '') {
             guardarError(true);
             return;
         }
@@ -101,59 +95,26 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         resultado = calcularLimpieza(limpieza) + resultado;
 
         // Instala so aumento 1800
-        // No instala so no aumento nada
-        const incrementoSO = obtenerSO(so);
-        resultado = incrementoSO + resultado;
+        // No instala so no aumento ----
+      
+        resultado = calcularSO(so) + resultado;
 
 
-        // Coloco display aumento 1200
-        // No coloco display no aumento nada
-        const incrementoDisplay = obtenerDisplay(display);
-        resultado = incrementoDisplay + resultado;
+        // Coloco display 
+     
+        resultado = calcularDisplay(display) + resultado;
 
-         // Coloco SSD aumento 300
-        // No coloco SSD no aumento nada
-        const incrementoSSD = obtenerSSD(ssd);
-        resultado = incrementoSSD + resultado;
-
-
-        // Coloco RAM aumento 300
-        // No coloco RAM no aumento nada
-        const incrementoRAM = obtenerRAM(ram);
-        resultado = incrementoRAM + resultado;
-
-        // Coloco HDD aumento 300
-        // No coloco HDD no aumento nada
-        const incrementoHDD = obtenerHDD(hdd);
-        resultado = incrementoHDD + resultado;
-
-        // Realizo backup menor a 35 gb
-        // Realizo backup mayor a 35gb
-        const incrementoBackup = obtenerBackup(backup);
-        resultado = incrementoBackup + resultado;
-
-        // Calcula precio de hdd sata
+        
+        // Colocacion de hdd sata
         resultado = calcularDURO(disco) + resultado;
         
         
-        // Calcula precio de ssd sata
+        // Colocacion de ssd sata
         resultado = calcularSATA(sata) + resultado;
 
 
-        // Calcula precio de ssd m2
-        resultado = calcularM2(m2) + resultado;
-
-
-        // Calcula precio de ssd m2 pcie
-        resultado = calcularM2PCIE(pcie) + resultado;
-
-
-        // Calcula precio de ram soddim 3
-        resultado = calcularRAM3(ram3) + resultado;
-
-
-        // Calcula precio de ram soddim 4
-        resultado = calcularRAM4(ram4) + resultado;
+        // Ampliacion de la ram
+        resultado = calcularRAM(ram) + resultado;
 
         
 
@@ -182,13 +143,13 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
             { error ? <Error>Todos los campos son obligatorios</Error>  : null }
 
             <Campo>
-                <Label>Limpieza</Label>
+                <Label>Limpieza de Notebook</Label>
                 <Select
                     name="limpieza"
                     value={limpieza}
                     onChange={obtenerInformacion}
                 >
-                    <option value="nada">-- Seleccione --</option>
+                    <option value="----">-- Seleccione --</option>
                     <option value="basica">Basica</option>
                     <option value="advance">Advance</option>
                     <option value="prog">ProG</option>
@@ -198,87 +159,44 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
  
 
             <Campo>
-                <Label>Instalación SO</Label>
-                <InputRadio 
-                    type="checkbox"
+                <Label>Instalación Sistema Operativo</Label>
+                <Select
                     name="so"
-                    value="si"
-                    checked={so === "si"}
+                    value={so}
                     onChange={obtenerInformacion}
-                /> * Backup hasta 35GB incluido en la instalación
+                >
+                    <option value="no">-- Seleccione --</option>
+                    <option value="menos">Backup de datos GRATIS con menos de 35GB</option>
+                    <option value="mas">Backup de mas de 35GB</option>
+                </Select>
             </Campo>
 
 
 
             <Campo>
-                <Label>Colocación Display</Label>
-                <InputRadio 
-                    type="checkbox"
+                <Label>Colocación Pantalla</Label>
+                <Select
                     name="display"
-                    value="si"
-                    checked={display === "si"}
+                    value={display}
                     onChange={obtenerInformacion}
-                />     
-            </Campo>
-
-
-
-             <Campo>
-                <Label>Colocación SSD</Label>
-                <InputRadio 
-                    type="checkbox"
-                    name="ssd"
-                    value="si"
-                    checked={ssd === "si"}
-                    onChange={obtenerInformacion}
-                />       
-            </Campo>
-
-            <Campo>
-                <Label>Colocación RAM</Label>
-                <InputRadio 
-                    type="checkbox"
-                    name="ram"
-                    value="si"
-                    checked={ram === "si"}
-                    onChange={obtenerInformacion}
-                />
+                >
+                    <option value="----">-- Seleccione --</option>
+                    <option value="si">Colocar Display</option>
+                    <option value="no">No Colocar Display</option>
+                  
+                </Select>   
             </Campo>
 
 
 
             <Campo>
-                <Label>Colocación HDD</Label>
-                <InputRadio 
-                    type="checkbox"
-                    name="hdd"
-                    value="si"
-                    checked={hdd === "si"}
-                    onChange={obtenerInformacion}
-                />
-            </Campo>
-
-
-            <Campo>
-                <Label>Back up de Datos</Label>
-                <InputRadio 
-                    type="checkbox"
-                    name="backup"
-                    value="si"
-                    checked={backup === "si"}
-                    onChange={obtenerInformacion}
-                /> Mas de 35GB 
-            </Campo>
-
-
-            <Campo>
-                <Label>HDD</Label>
+                <Label>Colocación Disco Rigido</Label>
                 <Select
                     name="disco"
                     value={disco}
                     onChange={obtenerInformacion}
                 >
-                    <option value="nada">-- Seleccione --</option>
+                    <option value="----">-- Seleccione --</option>
                     <option value="500GB">500GB</option>
                     <option value="1TB">1TB</option>
                     <option value="otros">otros</option>
@@ -287,13 +205,13 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
 
 
             <Campo>
-                <Label>SSD SATA</Label>
+                <Label>Colocación Disco Solido</Label>
                 <Select
                     name="sata"
                     value={sata}
                     onChange={obtenerInformacion}
                 >
-                    <option value="nada">-- Seleccione --</option>
+                    <option value="----">-- Seleccione --</option>
                     <option value="120GB">120GB</option>
                     <option value="240GB">240GB</option>
                     <option value="otros">500GB</option>
@@ -301,59 +219,15 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
             </Campo>
 
 
+            
             <Campo>
-                <Label>SSD M.2</Label>
+                <Label>Ampliación memoria RAM</Label>
                 <Select
-                    name="m2"
-                    value={m2}
+                    name="ram"
+                    value={ram}
                     onChange={obtenerInformacion}
                 >
-                   <option value="nada">-- Seleccione --</option>
-                    <option value="128GB">128GB</option>
-                    <option value="256GB">256GB</option>
-                    <option value="otros">500GB</option>
-                </Select>
-            </Campo>
-
-
-            <Campo>
-                <Label>SSD M.2 pcie</Label>
-                <Select
-                    name="pcie"
-                    value={pcie}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="nada">-- Seleccione --</option>
-                    <option value="128GB">128GB</option>
-                    <option value="256GB">256GB</option>
-                    <option value="otros">500GB</option>
-                </Select>
-            </Campo>
-
-
-            <Campo>
-                <Label>RAM SODDIM3</Label>
-                <Select
-                    name="ram3"
-                    value={ram3}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="nada">-- Seleccione --</option>
-                    <option value="4GB">4GB</option>
-                    <option value="8GB">8GB</option>
-                    <option value="otros">16GB</option>
-                </Select>
-            </Campo>
-
-
-            <Campo>
-                <Label>RAM SODDIM4</Label>
-                <Select
-                    name="ram4"
-                    value={ram4}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="nada">-- Seleccione --</option>
+                    <option value="----">-- Seleccione --</option>
                     <option value="4GB">4GB</option>
                     <option value="8GB">8GB</option>
                     <option value="otros">16GB</option>
