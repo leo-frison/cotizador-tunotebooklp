@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { calcularLimpieza, calcularSO, calcularDisplay, calcularDURO, calcularSATA, calcularRAM } from '../helper';
+import { calcularLimpieza, calcularSO,  calcularSATA, calcularRAM, calcularDURO, calcularDisplay} from '../helper';
 
 
 const Campo = styled.div`
@@ -55,16 +55,16 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
     const [ datos, guardarDatos ] = useState({
         limpieza: '----',
         so: '----',
-        display: '----',
-        disco: '----',
         sata: '----',
-        ram: '----'
+        ram: '----',
+        disco: '----',
+        display: '----'
 
     });
     const [ error, guardarError ] = useState(false);
 
     // extraer los valores del state
-    const { limpieza, so, display, disco, sata, ram } = datos;
+    const { limpieza, so, sata, ram, disco, display } = datos;
 
     // Leer los datos del formulario y colocarlos en el state
     const obtenerInformacion = e => {
@@ -78,7 +78,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
     const cotizarSeguro = e => {
         e.preventDefault();
 
-        if(limpieza.trim() === '' || so.trim() === '' || display.trim() === '' || disco.trim() === '' || sata.trim() === '' || ram.trim() === '') {
+        if(limpieza.trim() === '' || so.trim() === ''  || sata.trim() === '' || ram.trim() === '' || disco.trim() === '' || display.trim() === '') {
             guardarError(true);
             return;
         }
@@ -99,15 +99,6 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
       
         resultado = calcularSO(so) + resultado;
 
-
-        // Coloco display 
-     
-        resultado = calcularDisplay(display) + resultado;
-
-        
-        // Colocacion de hdd sata
-        resultado = calcularDURO(disco) + resultado;
-        
         
         // Colocacion de ssd sata
         resultado = calcularSATA(sata) + resultado;
@@ -115,8 +106,14 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
 
         // Ampliacion de la ram
         resultado = calcularRAM(ram) + resultado;
-
         
+        
+        // Colocacion de hdd sata
+        resultado = calcularDURO(disco) + resultado;
+        
+        // Coloco display 
+     
+        resultado = calcularDisplay(display) + resultado;
 
         guardarCargando(true);
 
@@ -140,7 +137,6 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         <form
             onSubmit={cotizarSeguro}
         >
-            { error ? <Error>Todos los campos son obligatorios</Error>  : null }
 
             <Campo>
                 <Label>Limpieza de Notebook</Label>
@@ -150,9 +146,9 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="----">-- Seleccione --</option>
-                    <option value="basica">Basica</option>
-                    <option value="advance">Advance</option>
-                    <option value="prog">ProG</option>
+                    <option value="basica">Basica a $600</option>
+                    <option value="advance">Advance a $1200</option>
+                    <option value="prog">ProG a $1800</option>
                 </Select>
             </Campo>
 
@@ -166,40 +162,8 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="no">-- Seleccione --</option>
-                    <option value="menos">Backup de datos GRATIS con menos de 35GB</option>
-                    <option value="mas">Backup de mas de 35GB</option>
-                </Select>
-            </Campo>
-
-
-
-            <Campo>
-                <Label>Colocación Pantalla</Label>
-                <Select
-                    name="display"
-                    value={display}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="----">-- Seleccione --</option>
-                    <option value="si">Colocar Display</option>
-                    <option value="no">No Colocar Display</option>
-                  
-                </Select>   
-            </Campo>
-
-
-
-            <Campo>
-                <Label>Colocación Disco Rigido</Label>
-                <Select
-                    name="disco"
-                    value={disco}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="----">-- Seleccione --</option>
-                    <option value="500GB">500GB</option>
-                    <option value="1TB">1TB</option>
-                    <option value="otros">otros</option>
+                    <option value="menos">Paquete Office + Backup inferior a 35GB a $1200</option>
+                    <option value="mas">Backup de mas de 35GB se agrega a $1200 unos 100$ cada 5GB</option>
                 </Select>
             </Campo>
 
@@ -234,9 +198,38 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                 </Select>
             </Campo>
 
+
+            <Campo>
+                <Label>Colocación Disco Rigido</Label>
+                <Select
+                    name="disco"
+                    value={disco}
+                    onChange={obtenerInformacion}
+                >
+                    <option value="----">-- Seleccione --</option>
+                    <option value="500GB">500GB</option>
+                    <option value="1TB">1TB</option>
+                    <option value="otros">otros</option>
+                </Select>
+            </Campo>
+
+
+            <Campo>
+                <Label>Colocación Pantalla</Label>
+                <Select
+                    name="display"
+                    value={display}
+                    onChange={obtenerInformacion}
+                >
+                    <option value="----">-- Seleccione --</option>
+                    <option value="si">Colocación de Display $1200</option>
+                </Select>   
+            </Campo>
+
+
+
             <Boton type="submit">Cotizar</Boton>
 
-            { error ? <Error>Todos los campos son obligatorios</Error>  : null }
         </form>
 
      );

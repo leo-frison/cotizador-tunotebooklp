@@ -16,7 +16,7 @@ const Resumen = ({datos}) => {
     // extraer de datos
     const {limpieza, so, display, disco, sata, ram} = datos;
 
-    if(limpieza === '' || so === '' || display === '' || disco === '' || sata === '' || ram === '') return null;
+    if(limpieza === '' || so === '' || sata === '' || ram === '' || disco === '' || display === '') return null;
 
     return ( 
         <ContenedorResumen>
@@ -24,10 +24,10 @@ const Resumen = ({datos}) => {
             <ul>
                 <li>Limpieza: { primerMayuscula(limpieza) } </li>
                 <li>Instalacion SO : {primerMayuscula(so)} </li>
-                <li>Colocación Display: { primerMayuscula(display) } </li>
-                <li>Colocación HDD: { primerMayuscula(disco) } </li>
                 <li>Colocación SSD: { primerMayuscula(sata) } </li>
                 <li>Ampliación RAM: { primerMayuscula(ram) } </li>
+                <li>Colocación HDD: { primerMayuscula(disco) } </li>
+                <li>Colocación Display: { primerMayuscula(display) } </li>
             </ul>
         </ContenedorResumen>
      );

@@ -30,10 +30,10 @@ function App() {
       datos: {
         limpieza: '',
         so: '',
-        display: '',
-        disco: '',
         sata: '',
-        ram: ''
+        ram: '',
+        disco: '',
+        display: ''
       }
   });
 
