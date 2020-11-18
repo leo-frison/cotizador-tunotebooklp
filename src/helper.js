@@ -56,14 +56,23 @@ export function calcularSATA(sata) {
             incremento = 0;
             break;
         case '120GB':
-            incremento = 1200;
+            incremento = 3650;
             break;
         case '240GB':
-            incremento = 2400;
+            incremento = 4650;
             break
-        case 'otros':
-            incremento = 3600;
+        case 'm21':
+            incremento = 3650;
             break
+        case 'm22':
+            incremento = 5650;
+            break    
+        case 'pcie1':
+            incremento = 6150;
+            break
+        case 'pcie2':
+            incremento = 7750;
+            break    
             
         default:
             break;
@@ -82,15 +91,11 @@ export function calcularRAM(ram) {
             incremento = 0;
             break;
         case '4GB':
-            incremento = 500;
+            incremento = 3700;
             break;
         case '8GB':
-            incremento = 1000;
+            incremento = 5900;
             break
-        case 'otros':
-            incremento = 2000;
-            break
-            
         default:
             break;
     }
@@ -110,15 +115,11 @@ export function calcularDURO(disco) {
             incremento = 0;
             break;
         case '500GB':
-            incremento = 1000;
+            incremento = 2250;
             break;
         case '1TB':
-            incremento = 2000;
-            break
-        case 'otros':
-            incremento = 3000;
-            break
-            
+            incremento = 3750;
+     
         default:
             break;
     }
@@ -126,27 +127,6 @@ export function calcularDURO(disco) {
     return incremento;
 }
 
-
-
-
-// Calcula si coloca Display
-
-export function calcularDisplay(display) {
-    let incremento;
-
-    switch(display) {
-        case '----':
-            incremento = 0;
-            break;
-        case 'si':
-            incremento = 1200;
-            break;       
-        default:
-            break;
-    }
-
-    return incremento;
-}
 
 
 

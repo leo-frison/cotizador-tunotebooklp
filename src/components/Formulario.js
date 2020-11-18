@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { calcularLimpieza, calcularSO,  calcularSATA, calcularRAM, calcularDURO, calcularDisplay} from '../helper';
+import { calcularLimpieza, calcularSO,  calcularSATA, calcularRAM, calcularDURO} from '../helper';
 
 
 const Campo = styled.div`
@@ -111,10 +111,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
         // Colocacion de hdd sata
         resultado = calcularDURO(disco) + resultado;
         
-        // Coloco display 
      
-        resultado = calcularDisplay(display) + resultado;
-
         guardarCargando(true);
 
         setTimeout(() => {
@@ -162,8 +159,8 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="no">-- Seleccione --</option>
-                    <option value="menos">Paquete Office + Backup inferior a 35GB a $1200</option>
-                    <option value="mas">Backup de mas de 35GB se agrega a $1200 unos 100$ cada 5GB</option>
+                    <option value="menos">Backup inferior a 35GB a $1200</option>
+                    <option value="mas">Backup de mas de 35GB se agrega unos 100$ cada 10GB</option>
                 </Select>
             </Campo>
 
@@ -176,9 +173,13 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="----">-- Seleccione --</option>
-                    <option value="120GB">120GB</option>
-                    <option value="240GB">240GB</option>
-                    <option value="otros">500GB</option>
+                    <option value="120GB">SATA de 120GB a $3650</option>
+                    <option value="240GB">SATA de 240GB a $4650</option>
+                    <option value="m21">M.2 de 128GB a $3650</option>
+                    <option value="m22">M.2 de 256GB a $5650</option>
+                    <option value="pcie1">PCIE de 128GB a $6150</option>
+                    <option value="pcie2">PCIE de 256GB a $7750</option>
+                    
                 </Select>
             </Campo>
 
@@ -192,9 +193,8 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="----">-- Seleccione --</option>
-                    <option value="4GB">4GB</option>
-                    <option value="8GB">8GB</option>
-                    <option value="otros">16GB</option>
+                    <option value="4GB">RAM de 4GB a $3700 </option>
+                    <option value="8GB">RAM de 8GB a $5900</option>
                 </Select>
             </Campo>
 
@@ -207,25 +207,10 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="----">-- Seleccione --</option>
-                    <option value="500GB">500GB</option>
-                    <option value="1TB">1TB</option>
-                    <option value="otros">otros</option>
+                    <option value="500GB">500GB a $2250</option>
+                    <option value="1TB">1TB a $3750</option>
                 </Select>
             </Campo>
-
-
-            <Campo>
-                <Label>Colocación Pantalla</Label>
-                <Select
-                    name="display"
-                    value={display}
-                    onChange={obtenerInformacion}
-                >
-                    <option value="----">-- Seleccione --</option>
-                    <option value="si">Colocación de Display $1200</option>
-                </Select>   
-            </Campo>
-
 
 
             <Boton type="submit">Cotizar</Boton>

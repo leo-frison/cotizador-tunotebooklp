@@ -32,8 +32,7 @@ function App() {
         so: '',
         sata: '',
         ram: '',
-        disco: '',
-        display: ''
+        disco: ''
       }
   });
 
