@@ -144,7 +144,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                 >
                     <option value="----">-- Seleccione --</option>
                     <option value="basica">Basica a $600</option>
-                    <option value="advance">Advance a $1200</option>
+                    <option value="advance">Advance a $1800</option>
                     <option value="prog">ProG a $1800</option>
                 </Select>
             </Campo>
