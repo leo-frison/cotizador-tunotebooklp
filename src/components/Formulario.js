@@ -159,7 +159,7 @@ const Formulario = ({guardarResumen, guardarCargando}) => {
                     onChange={obtenerInformacion}
                 >
                     <option value="no">-- Seleccione --</option>
-                    <option value="menos">Backup inferior a 35GB a $1200</option>
+                    <option value="menos">Backup inferior a 35GB a $1800</option>
                     <option value="mas">Backup de mas de 35GB se agrega unos 100$ cada 10GB</option>
                 </Select>
             </Campo>
