@@ -19,9 +19,6 @@ const Select = styled.select`
     border: 1px solid #e1e1e1;
     -webkit-appearance: none;
 `;
-const InputRadio = styled.input`
-    margin: 0 1rem;
-`;
 
 const Boton = styled.button`
     background-color: black;
@@ -41,14 +38,6 @@ const Boton = styled.button`
     }
 `;
 
-const Error = styled.div`
-    background-color: red;
-    color: white;
-    padding: 1rem;
-    width:100%;
-    text-align: center;
-    margin-bottom: 2rem;
-`;
 
 const Formulario = ({guardarResumen, guardarCargando}) => {
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { TransitionGroup, CSSTransition  } from 'react-transition-group';
 import PropTypes from 'prop-types';
+import ReactWhatsapp from '../ReactWhatsapp';
 
 const Mensaje = styled.p`
     background-color: rgb(127, 224, 237);
@@ -10,6 +11,8 @@ const Mensaje = styled.p`
     padding: 1rem;
     text-align: center;
 `;
+
+const number='54 9 2216 76-7615';
 
 const ResultadoCotizacion = styled.div`
     text-align: center;
@@ -50,6 +53,9 @@ const Resultado = ({cotizacion}) => {
                             </CSSTransition>
                         </TransitionGroup>
                         <Mensaje>Saca una captura de pantalla del Resumen de Cotización y envianos la imagen por whatsapp</Mensaje> 
+                        <ReactWhatsapp number={number}>
+                          Abrir Whatsapp
+                        </ReactWhatsapp>
                     </ResultadoCotizacion>
                 )
     )

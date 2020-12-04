@@ -11,12 +11,7 @@ const Contenedor = styled.div`
   max-width: 600px;
   margin: 0 auto;
 `;
-const Mensaje = styled.p`
-    background-color: rgb(127, 224, 237);
-    margin-top: 2rem;
-    padding: 1rem;
-    text-align: center;
-`;
+
 
 const ContenedorFormulario = styled.div`
   background-color: #FFF;
