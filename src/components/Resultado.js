@@ -4,6 +4,9 @@ import { TransitionGroup, CSSTransition  } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import ReactWhatsapp from '../ReactWhatsapp';
 
+
+
+
 const Mensaje = styled.p`
     background-color: rgb(127, 224, 237);
     margin-top: 2rem;
@@ -32,9 +35,10 @@ const TextoCotizacion = styled.p`
 `;
 
 
-const Resultado = ({cotizacion}) => {
 
+const Resultado = ({cotizacion}) => {
     return (
+       
         (cotizacion === 0) 
             ? <Mensaje>Saca una captura de pantalla del resumen de cotizacion y envianos la imagen por whatsapp</Mensaje> 
             :  

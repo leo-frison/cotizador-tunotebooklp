@@ -4,6 +4,7 @@ import Formulario from './components/Formulario';
 import Resumen from './components/Resumen';
 import Resultado from './components/Resultado';
 import Spinner from './components/Spinner';
+import Button from '@material-ui/core/Button'
 
 import styled from '@emotion/styled';
 
@@ -41,8 +42,11 @@ function App() {
         <Header 
           titulo='Cotizador de Presupuesto'
         />
-        
+           <Button variant="contained" color="primary" href="https://tunotebooklp.com/">
+               Volver a Inicio
+            </Button>
         <ContenedorFormulario>
+           
             <Formulario 
               guardarResumen={guardarResumen}
               guardarCargando={guardarCargando}
